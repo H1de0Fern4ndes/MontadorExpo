@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>JS Montagem e Serviços | Montador de Móveis Profissional em Tatuí e Região</title>
   <meta name="description" content="Montagem profissional de móveis em Tatuí e região. Agilidade, ferramentas próprias, garantia de serviço e sem sujeira na sua casa. Simule seu orçamento agora!">
 
@@ -49,14 +49,27 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Custom animations and styling */
-    @keyframes pulse-subtle {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    /* Prevent unwanted zooming on inputs on iOS Safari */
+    @media screen and (max-width: 768px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
     }
-    .animate-pulse-subtle {
-      animation: pulse-subtle 3s infinite ease-in-out;
+
+    /* Fast touch response */
+    button, a, input, label {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
+
+    /* Safe bottom area padding for iPhone home indicator */
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 1rem);
+    }
+    .bottom-safe {
+      bottom: env(safe-area-inset-bottom, 0px);
+    }
+
     /* Hide native number spinners */
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { 
@@ -68,21 +81,21 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans selection:bg-amber-400 selection:text-slate-900">
+<body class="bg-slate-50 text-slate-800 antialiased font-sans selection:bg-amber-400 selection:text-slate-900 pb-20 lg:pb-0">
 
   <!-- ================= TOP NOTIFICATION BAR ================= -->
-  <div class="bg-slate-900 text-slate-200 text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-        <span class="inline-flex items-center gap-1.5 font-medium">
-          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i>
-          Atendendo <strong>Tatuí, Cerquilho, Boituva</strong> e toda a região
+  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-3 sm:px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-2 text-center sm:text-left">
+      <div class="flex items-center justify-center gap-2">
+        <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-emerald-500 animate-ping shrink-0"></span>
+        <span class="inline-flex items-center gap-1 font-medium text-[11px] sm:text-xs">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400 shrink-0"></i>
+          Atendendo <strong>Tatuí, Cerquilho, Boituva</strong> e região
         </span>
       </div>
-      <div class="flex items-center gap-4 text-xs">
-        <span class="text-slate-400 flex items-center gap-1">
-          <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i> Seg a Sáb: 07h às 19h
+      <div class="flex items-center justify-center gap-3 text-[11px] sm:text-xs text-slate-300">
+        <span class="text-slate-400 hidden xs:inline-flex items-center gap-1">
+          <i data-lucide="clock" class="w-3 h-3 text-amber-400"></i> Seg a Sáb: 07h às 19h
         </span>
         <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20de%20montagem" target="_blank" class="hover:text-amber-400 transition-colors flex items-center gap-1 font-semibold text-white">
           <i data-lucide="phone" class="w-3 h-3 text-emerald-400"></i> (15) 99999-9999
@@ -92,26 +105,26 @@
   </div>
 
   <!-- ================= HEADER / NAVBAR ================= -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-800 flex items-center justify-center text-white shadow-md shadow-blue-700/20 group-hover:scale-105 transition-transform">
-          <i data-lucide="hammer" class="w-6 h-6 text-amber-400"></i>
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-800 flex items-center justify-center text-white shadow-md shadow-blue-700/20 group-hover:scale-105 transition-transform shrink-0">
+          <i data-lucide="hammer" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-400"></i>
         </div>
         <div>
-          <span class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 block leading-tight">
+          <span class="text-lg sm:text-2xl font-extrabold tracking-tight text-slate-900 block leading-none sm:leading-tight">
             JS <span class="text-blue-700">Montagem</span>
           </span>
-          <span class="text-[11px] font-semibold text-slate-500 tracking-wider uppercase block">
+          <span class="text-[9px] sm:text-[11px] font-semibold text-slate-500 tracking-wider uppercase block mt-0.5 sm:mt-0">
             e Serviços Especializados
           </span>
         </div>
       </a>
 
       <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-semibold text-slate-600">
         <a href="#simulador" class="hover:text-blue-700 transition-colors flex items-center gap-1.5">
           <i data-lucide="calculator" class="w-4 h-4 text-amber-500"></i> Simulador de Orçamento
         </a>
@@ -121,91 +134,150 @@
         <a href="#faq" class="hover:text-blue-700 transition-colors">Dúvidas</a>
       </nav>
 
-      <!-- CTA Button -->
-      <div class="flex items-center gap-3">
-        <a href="#simulador" class="hidden sm:inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all">
-          <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+      <!-- Action Buttons & Mobile Hamburger -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        
+        <!-- Desktop Quick CTA -->
+        <a href="#simulador" class="hidden sm:inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold text-xs sm:text-sm px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl shadow-xs hover:shadow-md transition-all">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i>
           Simular Grátis
         </a>
-        <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20preciso%20de%20um%20montador%20de%20m%C3%B3veis" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all">
+
+        <!-- WhatsApp Quick Button -->
+        <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20preciso%20de%20um%20montador%20de%20m%C3%B3veis" target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-xs transition-all">
           <i data-lucide="message-circle" class="w-4 h-4"></i>
-          <span class="hidden sm:inline">WhatsApp</span>
+          <span class="hidden xs:inline">WhatsApp</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" id="mobile-menu-toggle" aria-label="Abrir menu" class="md:hidden p-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 active:bg-slate-200 transition-colors">
+          <i data-lucide="menu" id="menu-icon-bars" class="w-5 h-5"></i>
+          <i data-lucide="x" id="menu-icon-close" class="w-5 h-5 hidden"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white/98 backdrop-blur-md px-4 py-4 space-y-3 shadow-xl transition-all">
+      <nav class="flex flex-col space-y-2 text-sm font-semibold text-slate-700">
+        <a href="#simulador" class="mobile-nav-link flex items-center justify-between p-2.5 rounded-xl bg-blue-50/80 text-blue-800 font-bold">
+          <span class="flex items-center gap-2">
+            <i data-lucide="calculator" class="w-4 h-4 text-blue-600"></i>
+            Simulador de Orçamento
+          </span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-blue-400"></i>
+        </a>
+        <a href="#diferenciais" class="mobile-nav-link flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100">
+          <span class="flex items-center gap-2">
+            <i data-lucide="wrench" class="w-4 h-4 text-slate-500"></i>
+            Diferenciais & Ferramentas
+          </span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#como-funciona" class="mobile-nav-link flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100">
+          <span class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-slate-500"></i>
+            Como Funciona
+          </span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#avaliacoes" class="mobile-nav-link flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100">
+          <span class="flex items-center gap-2">
+            <i data-lucide="star" class="w-4 h-4 text-amber-500"></i>
+            Avaliações de Clientes
+          </span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+        <a href="#faq" class="mobile-nav-link flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-100">
+          <span class="flex items-center gap-2">
+            <i data-lucide="help-circle" class="w-4 h-4 text-slate-500"></i>
+            Dúvidas Frequentes
+          </span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </a>
+      </nav>
+
+      <div class="pt-2 border-t border-slate-100">
+        <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20preciso%20de%20um%20montador%20de%20m%C3%B3veis" target="_blank" class="w-full flex items-center justify-center gap-2 bg-emerald-600 active:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          Falar Diretamente no WhatsApp
         </a>
       </div>
     </div>
   </header>
 
   <!-- ================= HERO SECTION ================= -->
-  <section class="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24 bg-gradient-to-b from-blue-50/70 via-slate-50 to-slate-50">
+  <section class="relative overflow-hidden pt-8 pb-12 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24 bg-gradient-to-b from-blue-50/70 via-slate-50 to-slate-50">
     <!-- Subtle Background Shapes -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full overflow-hidden pointer-events-none -z-10">
-      <div class="absolute -top-32 right-10 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl"></div>
-      <div class="absolute top-48 -left-20 w-80 h-80 bg-amber-200/30 rounded-full blur-3xl"></div>
+      <div class="absolute -top-32 right-10 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
+      <div class="absolute top-48 -left-20 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         <!-- Left Content -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left">
           
           <!-- Badge -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-xs sm:text-sm font-bold shadow-xs">
-            <i data-lucide="shield-check" class="w-4 h-4 text-blue-700"></i>
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-blue-100 border border-blue-200 text-blue-800 text-[11px] sm:text-xs font-bold shadow-2xs">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-700 shrink-0"></i>
             Profissional de Alta Confiança • Tatuí e Região
           </div>
 
           <!-- Headline -->
-          <h1 class="text-3xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
             Montagem <span class="text-blue-700 underline decoration-amber-400 decoration-wavy decoration-2">profissional</span>, rápida e sem sujeira na sua casa.
           </h1>
 
           <!-- Subtitle -->
-          <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Comprou móveis novos pela internet ou loja física e não sabe quem vai montar? A <strong>JS Montagem</strong> cuida de tudo com ferramentas especializadas, nivelamento exato e respeito total ao seu lar.
+          <p class="text-sm sm:text-base lg:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Comprou móveis novos e precisa de montador com experiência? A <strong>JS Montagem</strong> cuida de tudo com ferramentas especializadas, nivelamento exato e respeito ao seu lar.
           </p>
 
           <!-- Action Buttons -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#simulador" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-base px-7 py-4 rounded-xl shadow-lg shadow-amber-500/25 transition-all transform hover:-translate-y-0.5">
-              <i data-lucide="calculator" class="w-5 h-5"></i>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
+            <a href="#simulador" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 active:bg-amber-600 text-slate-950 font-bold text-sm sm:text-base px-6 py-3.5 sm:py-4 rounded-xl shadow-lg shadow-amber-500/25 transition-all">
+              <i data-lucide="calculator" class="w-5 h-5 shrink-0"></i>
               Calcular Orçamento Online
             </a>
-            <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20gostaria%20de%20um%20atendimento%20r%C3%A1pido%20para%20montagem" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-bold text-base px-6 py-4 rounded-xl shadow-xs transition-all">
-              <i data-lucide="message-square" class="w-5 h-5 text-emerald-600"></i>
+            <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20gostaria%20de%20um%20atendimento%20r%C3%A1pido%20para%20montagem" target="_blank" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 active:bg-slate-200 border border-slate-300 text-slate-800 font-bold text-sm sm:text-base px-5 py-3.5 sm:py-4 rounded-xl shadow-2xs transition-all">
+              <i data-lucide="message-square" class="w-5 h-5 text-emerald-600 shrink-0"></i>
               Falar no WhatsApp
             </a>
           </div>
 
-          <!-- Trust Badges -->
-          <div class="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-left">
-            <div class="flex items-center gap-2.5">
-              <div class="w-9 h-9 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
-                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>
+          <!-- Trust Badges (Optimized for Mobile) -->
+          <div class="pt-4 sm:pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-2 sm:gap-4 max-w-lg mx-auto lg:mx-0 text-left">
+            <div class="flex flex-col xs:flex-row items-center xs:items-start text-center xs:text-left gap-1.5 xs:gap-2.5 p-2 rounded-xl bg-white/60 sm:bg-transparent border border-slate-200/50 sm:border-0">
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
               </div>
               <div>
-                <p class="text-xs font-bold text-slate-900 leading-tight">Garantia Total</p>
-                <p class="text-[11px] text-slate-500">Móvel firme e regulado</p>
+                <p class="text-xs font-bold text-slate-900 leading-tight">Garantia</p>
+                <p class="text-[10px] sm:text-[11px] text-slate-500">Móvel firme</p>
               </div>
             </div>
             
-            <div class="flex items-center gap-2.5">
-              <div class="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
-                <i data-lucide="sparkles" class="w-5 h-5 text-blue-700"></i>
+            <div class="flex flex-col xs:flex-row items-center xs:items-start text-center xs:text-left gap-1.5 xs:gap-2.5 p-2 rounded-xl bg-white/60 sm:bg-transparent border border-slate-200/50 sm:border-0">
+              <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
+                <i data-lucide="sparkles" class="w-4 h-4 text-blue-700"></i>
               </div>
               <div>
-                <p class="text-xs font-bold text-slate-900 leading-tight">Zero Bagunça</p>
-                <p class="text-[11px] text-slate-500">Limpeza pós-serviço</p>
+                <p class="text-xs font-bold text-slate-900 leading-tight">Limpeza</p>
+                <p class="text-[10px] sm:text-[11px] text-slate-500">Zero sujeira</p>
               </div>
             </div>
 
-            <div class="flex items-center gap-2.5">
-              <div class="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
-                <i data-lucide="zap" class="w-5 h-5 text-amber-600"></i>
+            <div class="flex flex-col xs:flex-row items-center xs:items-start text-center xs:text-left gap-1.5 xs:gap-2.5 p-2 rounded-xl bg-white/60 sm:bg-transparent border border-slate-200/50 sm:border-0">
+              <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
+                <i data-lucide="zap" class="w-4 h-4 text-amber-600"></i>
               </div>
               <div>
                 <p class="text-xs font-bold text-slate-900 leading-tight">Agilidade</p>
-                <p class="text-[11px] text-slate-500">Horário pontual</p>
+                <p class="text-[10px] sm:text-[11px] text-slate-500">No horário</p>
               </div>
             </div>
           </div>
@@ -213,77 +285,77 @@
         </div>
 
         <!-- Right Visual / Featured Card -->
-        <div class="lg:col-span-5 relative">
+        <div class="lg:col-span-5 relative mt-4 lg:mt-0">
           <div class="relative mx-auto max-w-md lg:max-w-none">
             
             <!-- Main Card -->
-            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-7 relative z-10">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-5 sm:p-7 relative z-10">
               <div class="flex items-center justify-between pb-4 border-b border-slate-100">
                 <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-full bg-blue-700 text-white flex items-center justify-center font-bold text-lg">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-700 text-white flex items-center justify-center font-bold text-base sm:text-lg shrink-0">
                     JS
                   </div>
                   <div>
-                    <h3 class="font-bold text-slate-900 text-base">JS Montagem e Serviços</h3>
-                    <p class="text-xs text-emerald-600 font-semibold flex items-center gap-1">
-                      <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Disponível para agendamento
+                    <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">JS Montagem e Serviços</h3>
+                    <p class="text-xs text-emerald-600 font-semibold flex items-center gap-1 mt-0.5">
+                      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Disponível para agendamento
                     </p>
                   </div>
                 </div>
-                <div class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500 text-amber-500"></i> 5.0 (140+ avaliações)
+                <div class="bg-amber-100 text-amber-800 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-bold flex items-center gap-1 shrink-0">
+                  <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500 text-amber-500"></i> 5.0
                 </div>
               </div>
 
               <!-- Quick Highlights list -->
-              <div class="py-5 space-y-3.5">
-                <div class="flex items-start gap-3 text-sm text-slate-700">
-                  <div class="p-1.5 rounded bg-blue-50 text-blue-700 shrink-0">
-                    <i data-lucide="wrench" class="w-4 h-4"></i>
+              <div class="py-4 space-y-3">
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                  <div class="p-1 rounded bg-blue-50 text-blue-700 shrink-0 mt-0.5">
+                    <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
                   </div>
                   <div>
-                    <strong class="font-semibold text-slate-900">Parafusadeiras de torque controlado:</strong> Não espanam MDF/MDP.
+                    <strong class="font-semibold text-slate-900">Torque controlado:</strong> Parafusadeiras que não estragam MDF/MDP.
                   </div>
                 </div>
-                <div class="flex items-start gap-3 text-sm text-slate-700">
-                  <div class="p-1.5 rounded bg-blue-50 text-blue-700 shrink-0">
-                    <i data-lucide="crosshair" class="w-4 h-4"></i>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                  <div class="p-1 rounded bg-blue-50 text-blue-700 shrink-0 mt-0.5">
+                    <i data-lucide="crosshair" class="w-3.5 h-3.5"></i>
                   </div>
                   <div>
-                    <strong class="font-semibold text-slate-900">Nível a Laser de Alta Precisão:</strong> Painéis e nichos perfeitamente retos.
+                    <strong class="font-semibold text-slate-900">Nível a Laser:</strong> Painéis e nichos 100% alinhados.
                   </div>
                 </div>
-                <div class="flex items-start gap-3 text-sm text-slate-700">
-                  <div class="p-1.5 rounded bg-blue-50 text-blue-700 shrink-0">
-                    <i data-lucide="shield" class="w-4 h-4"></i>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                  <div class="p-1 rounded bg-blue-50 text-blue-700 shrink-0 mt-0.5">
+                    <i data-lucide="shield" class="w-3.5 h-3.5"></i>
                   </div>
                   <div>
-                    <strong class="font-semibold text-slate-900">Segurança & Cuidado:</strong> Proteção de pisos e paredes durante a montagem.
+                    <strong class="font-semibold text-slate-900">Cuidado total:</strong> Proteção de pisos e paredes durante a montagem.
                   </div>
                 </div>
               </div>
 
               <!-- Simulator CTA Preview box -->
-              <div class="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-xl p-4 text-white flex items-center justify-between">
+              <div class="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-xl p-3.5 sm:p-4 text-white flex items-center justify-between gap-2">
                 <div>
-                  <span class="text-xs text-blue-200 block uppercase font-bold tracking-wider">Transparência Total</span>
-                  <span class="text-sm font-semibold">Simule antes de contratar</span>
+                  <span class="text-[10px] sm:text-xs text-blue-200 block uppercase font-bold tracking-wider">Transparência</span>
+                  <span class="text-xs sm:text-sm font-semibold">Simule antes de contratar</span>
                 </div>
-                <a href="#simulador" class="bg-amber-400 hover:bg-amber-300 text-slate-900 text-xs font-bold px-3 py-2 rounded-lg transition-colors flex items-center gap-1">
-                  Calcular agora <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                <a href="#simulador" class="bg-amber-400 hover:bg-amber-300 active:bg-amber-500 text-slate-900 text-xs font-bold px-3 py-2 rounded-lg transition-colors flex items-center gap-1 shrink-0">
+                  Calcular <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                 </a>
               </div>
 
             </div>
 
             <!-- Decorative floating badge -->
-            <div class="absolute -bottom-5 -left-5 bg-white border border-slate-200 rounded-xl p-3 shadow-lg flex items-center gap-3 z-20 hidden sm:flex">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
-                <i data-lucide="award" class="w-6 h-6"></i>
+            <div class="absolute -bottom-4 -left-3 sm:-bottom-5 sm:-left-5 bg-white border border-slate-200 rounded-xl p-2.5 sm:p-3 shadow-lg flex items-center gap-2.5 z-20 hidden xs:flex">
+              <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                <i data-lucide="award" class="w-5 h-5"></i>
               </div>
               <div>
-                <p class="text-xs font-bold text-slate-900">+850 Móveis</p>
-                <p class="text-[11px] text-slate-500">Montados com excelência</p>
+                <p class="text-xs font-bold text-slate-900 leading-tight">+850 Móveis</p>
+                <p class="text-[10px] text-slate-500">Montados na região</p>
               </div>
             </div>
 
@@ -295,229 +367,233 @@
   </section>
 
   <!-- ================= STATS COUNTER STRIP ================= -->
-  <section class="bg-slate-900 text-white py-10 border-y border-slate-800">
+  <section class="bg-slate-900 text-white py-6 sm:py-8 border-y border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <div class="p-4">
-          <p class="text-3xl sm:text-4xl font-extrabold text-amber-400">850+</p>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 font-medium">Móveis Montados</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+        <div class="p-2 sm:p-4">
+          <p class="text-2xl sm:text-4xl font-extrabold text-amber-400">850+</p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-0.5 font-medium">Móveis Montados</p>
         </div>
-        <div class="p-4">
-          <p class="text-3xl sm:text-4xl font-extrabold text-blue-400">100%</p>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 font-medium">Compromisso e Pontualidade</p>
+        <div class="p-2 sm:p-4">
+          <p class="text-2xl sm:text-4xl font-extrabold text-blue-400">100%</p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-0.5 font-medium">Pontualidade</p>
         </div>
-        <div class="p-4">
-          <p class="text-3xl sm:text-4xl font-extrabold text-emerald-400">5.0 ★</p>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 font-medium">Nota Máxima dos Clientes</p>
+        <div class="p-2 sm:p-4">
+          <p class="text-2xl sm:text-4xl font-extrabold text-emerald-400">5.0 ★</p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-0.5 font-medium">Nota Máxima</p>
         </div>
-        <div class="p-4">
-          <p class="text-3xl sm:text-4xl font-extrabold text-amber-400">Tatuí</p>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 font-medium">& Toda a Microrregião</p>
+        <div class="p-2 sm:p-4">
+          <p class="text-2xl sm:text-4xl font-extrabold text-amber-400">Tatuí</p>
+          <p class="text-xs sm:text-sm text-slate-300 mt-0.5 font-medium">& Microrregião</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ================= SIMULADOR DE ORÇAMENTO (MAIN FEATURE) ================= -->
-  <section id="simulador" class="py-16 sm:py-20 bg-slate-100/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="simulador" class="py-10 sm:py-16 lg:py-20 bg-slate-100/90">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-3">
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-2">
           <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
           Simulador Interativo
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
           Calcule seu Orçamento em Tempo Real
         </h2>
-        <p class="text-slate-600 mt-3 text-base sm:text-lg">
-          Selecione os móveis que você precisa montar, preencha os dados básicos e envie seu pedido formatado direto no WhatsApp em 1 clique!
+        <p class="text-slate-600 mt-2 text-xs sm:text-base">
+          Toque nos móveis para selecionar, veja o valor total na hora e envie para o WhatsApp já formatado.
         </p>
       </div>
 
       <!-- Simulator Layout (Grid) -->
-      <div class="grid lg:grid-cols-12 gap-8 items-start">
+      <div class="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         
         <!-- Left: Item Selection + Form (8 cols) -->
-        <div class="lg:col-span-8 space-y-8">
+        <div class="lg:col-span-8 space-y-6 sm:space-y-8">
           
           <!-- STEP 1: ITENS -->
-          <div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-5 sm:p-7">
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-full bg-blue-700 text-white font-bold flex items-center justify-center text-sm">1</span>
-                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Escolha os Móveis para Montagem</h3>
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-4 sm:p-7">
+            <div class="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-4 sm:mb-6">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-700 text-white font-bold flex items-center justify-center text-xs sm:text-sm shrink-0">1</span>
+                <div>
+                  <h3 class="text-base sm:text-xl font-bold text-slate-900 leading-tight">Escolha os Móveis</h3>
+                  <p class="text-[11px] text-slate-500 sm:hidden">Toque no card para marcar ou desmarcar</p>
+                </div>
               </div>
-              <button type="button" id="btn-limpar-selecao" class="text-xs text-slate-500 hover:text-rose-600 font-semibold flex items-center gap-1 transition-colors">
-                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Limpar Tudo
+              <button type="button" id="btn-limpar-selecao" class="text-xs text-slate-500 hover:text-rose-600 active:text-rose-700 font-semibold flex items-center gap-1 transition-colors p-1">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                <span class="hidden xs:inline">Limpar</span>
               </button>
             </div>
 
             <!-- Items List / Cards -->
-            <div class="grid sm:grid-cols-2 gap-3.5" id="items-container">
+            <div class="grid sm:grid-cols-2 gap-3" id="items-container">
               
               <!-- Item 1: Guarda-Roupa Solteiro -->
-              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-4 transition-all duration-200 hover:border-blue-300 hover:shadow-xs bg-white cursor-pointer select-none" data-id="gr_solteiro" data-price="80" data-name="Guarda-Roupa Solteiro">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-blue-600 border-slate-300 cursor-pointer pointer-events-none">
-                    <div>
-                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Guarda-Roupa Solteiro</h4>
-                      <p class="text-xs text-slate-500 mt-0.5">2 a 3 portas ou infantil</p>
+              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-3.5 sm:p-4 transition-all duration-150 hover:border-blue-300 bg-white cursor-pointer select-none active:scale-[0.99]" data-id="gr_solteiro" data-price="80" data-name="Guarda-Roupa Solteiro">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-0 border-slate-300 pointer-events-none shrink-0">
+                    <div class="truncate">
+                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug truncate">Guarda-Roupa Solteiro</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">2 a 3 portas ou infantil</p>
                     </div>
                   </div>
-                  <span class="text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg">R$ 80,00</span>
+                  <span class="text-xs sm:text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg shrink-0">R$ 80,00</span>
                 </div>
                 
-                <!-- Quantity Controller (Visible when checked) -->
-                <div class="qty-control hidden mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-slate-500 font-medium">Quantidade:</span>
+                <!-- Quantity Controller -->
+                <div class="qty-control hidden mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-xs text-slate-600 font-medium">Quantidade:</span>
                   <div class="flex items-center gap-2">
-                    <button type="button" class="btn-qty-minus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">-</button>
-                    <span class="qty-display text-sm font-bold text-slate-800 w-6 text-center">1</span>
-                    <button type="button" class="btn-qty-plus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">+</button>
+                    <button type="button" aria-label="Diminuir quantidade" class="btn-qty-minus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">-</button>
+                    <span class="qty-display text-sm font-bold text-slate-900 w-6 text-center">1</span>
+                    <button type="button" aria-label="Aumentar quantidade" class="btn-qty-plus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">+</button>
                   </div>
                 </div>
               </div>
 
               <!-- Item 2: Guarda-Roupa Casal -->
-              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-4 transition-all duration-200 hover:border-blue-300 hover:shadow-xs bg-white cursor-pointer select-none" data-id="gr_casal" data-price="150" data-name="Guarda-Roupa Casal (4 a 6 portas)">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-blue-600 border-slate-300 cursor-pointer pointer-events-none">
-                    <div>
-                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Guarda-Roupa Casal</h4>
-                      <p class="text-xs text-slate-500 mt-0.5">4 a 6 portas / portas de correr</p>
+              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-3.5 sm:p-4 transition-all duration-150 hover:border-blue-300 bg-white cursor-pointer select-none active:scale-[0.99]" data-id="gr_casal" data-price="150" data-name="Guarda-Roupa Casal (4 a 6 portas)">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-0 border-slate-300 pointer-events-none shrink-0">
+                    <div class="truncate">
+                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug truncate">Guarda-Roupa Casal</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">4 a 6 portas ou correr</p>
                     </div>
                   </div>
-                  <span class="text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg">R$ 150,00</span>
+                  <span class="text-xs sm:text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg shrink-0">R$ 150,00</span>
                 </div>
                 
-                <div class="qty-control hidden mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-slate-500 font-medium">Quantidade:</span>
+                <div class="qty-control hidden mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-xs text-slate-600 font-medium">Quantidade:</span>
                   <div class="flex items-center gap-2">
-                    <button type="button" class="btn-qty-minus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">-</button>
-                    <span class="qty-display text-sm font-bold text-slate-800 w-6 text-center">1</span>
-                    <button type="button" class="btn-qty-plus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">+</button>
+                    <button type="button" aria-label="Diminuir quantidade" class="btn-qty-minus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">-</button>
+                    <span class="qty-display text-sm font-bold text-slate-900 w-6 text-center">1</span>
+                    <button type="button" aria-label="Aumentar quantidade" class="btn-qty-plus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">+</button>
                   </div>
                 </div>
               </div>
 
               <!-- Item 3: Painel de TV / Home -->
-              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-4 transition-all duration-200 hover:border-blue-300 hover:shadow-xs bg-white cursor-pointer select-none" data-id="painel_tv" data-price="90" data-name="Painel de TV / Home">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-blue-600 border-slate-300 cursor-pointer pointer-events-none">
-                    <div>
-                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Painel de TV / Home</h4>
-                      <p class="text-xs text-slate-500 mt-0.5">Com fixação e nível a laser</p>
+              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-3.5 sm:p-4 transition-all duration-150 hover:border-blue-300 bg-white cursor-pointer select-none active:scale-[0.99]" data-id="painel_tv" data-price="90" data-name="Painel de TV / Home">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-0 border-slate-300 pointer-events-none shrink-0">
+                    <div class="truncate">
+                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug truncate">Painel de TV / Home</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">Com fixação e nível laser</p>
                     </div>
                   </div>
-                  <span class="text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg">R$ 90,00</span>
+                  <span class="text-xs sm:text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg shrink-0">R$ 90,00</span>
                 </div>
                 
-                <div class="qty-control hidden mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-slate-500 font-medium">Quantidade:</span>
+                <div class="qty-control hidden mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-xs text-slate-600 font-medium">Quantidade:</span>
                   <div class="flex items-center gap-2">
-                    <button type="button" class="btn-qty-minus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">-</button>
-                    <span class="qty-display text-sm font-bold text-slate-800 w-6 text-center">1</span>
-                    <button type="button" class="btn-qty-plus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">+</button>
+                    <button type="button" aria-label="Diminuir quantidade" class="btn-qty-minus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">-</button>
+                    <span class="qty-display text-sm font-bold text-slate-900 w-6 text-center">1</span>
+                    <button type="button" aria-label="Aumentar quantidade" class="btn-qty-plus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">+</button>
                   </div>
                 </div>
               </div>
 
               <!-- Item 4: Cama / Treliche -->
-              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-4 transition-all duration-200 hover:border-blue-300 hover:shadow-xs bg-white cursor-pointer select-none" data-id="cama_treliche" data-price="60" data-name="Cama / Treliche">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-blue-600 border-slate-300 cursor-pointer pointer-events-none">
-                    <div>
-                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Cama / Treliche</h4>
-                      <p class="text-xs text-slate-500 mt-0.5">Solteiro, casal ou beliche</p>
+              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-3.5 sm:p-4 transition-all duration-150 hover:border-blue-300 bg-white cursor-pointer select-none active:scale-[0.99]" data-id="cama_treliche" data-price="60" data-name="Cama / Treliche">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-0 border-slate-300 pointer-events-none shrink-0">
+                    <div class="truncate">
+                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug truncate">Cama / Treliche</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">Solteiro, casal ou beliche</p>
                     </div>
                   </div>
-                  <span class="text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg">R$ 60,00</span>
+                  <span class="text-xs sm:text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg shrink-0">R$ 60,00</span>
                 </div>
                 
-                <div class="qty-control hidden mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-slate-500 font-medium">Quantidade:</span>
+                <div class="qty-control hidden mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-xs text-slate-600 font-medium">Quantidade:</span>
                   <div class="flex items-center gap-2">
-                    <button type="button" class="btn-qty-minus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">-</button>
-                    <span class="qty-display text-sm font-bold text-slate-800 w-6 text-center">1</span>
-                    <button type="button" class="btn-qty-plus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">+</button>
+                    <button type="button" aria-label="Diminuir quantidade" class="btn-qty-minus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">-</button>
+                    <span class="qty-display text-sm font-bold text-slate-900 w-6 text-center">1</span>
+                    <button type="button" aria-label="Aumentar quantidade" class="btn-qty-plus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">+</button>
                   </div>
                 </div>
               </div>
 
               <!-- Item 5: Mesa de Jantar com Cadeiras -->
-              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-4 transition-all duration-200 hover:border-blue-300 hover:shadow-xs bg-white cursor-pointer select-none" data-id="mesa_jantar" data-price="70" data-name="Mesa de Jantar com Cadeiras">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-blue-600 border-slate-300 cursor-pointer pointer-events-none">
-                    <div>
-                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Mesa de Jantar</h4>
-                      <p class="text-xs text-slate-500 mt-0.5">Com conjunto de 4 a 6 cadeiras</p>
+              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-3.5 sm:p-4 transition-all duration-150 hover:border-blue-300 bg-white cursor-pointer select-none active:scale-[0.99]" data-id="mesa_jantar" data-price="70" data-name="Mesa de Jantar com Cadeiras">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-0 border-slate-300 pointer-events-none shrink-0">
+                    <div class="truncate">
+                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug truncate">Mesa de Jantar</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">Com conjunto de cadeiras</p>
                     </div>
                   </div>
-                  <span class="text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg">R$ 70,00</span>
+                  <span class="text-xs sm:text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg shrink-0">R$ 70,00</span>
                 </div>
                 
-                <div class="qty-control hidden mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-slate-500 font-medium">Quantidade:</span>
+                <div class="qty-control hidden mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-xs text-slate-600 font-medium">Quantidade:</span>
                   <div class="flex items-center gap-2">
-                    <button type="button" class="btn-qty-minus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">-</button>
-                    <span class="qty-display text-sm font-bold text-slate-800 w-6 text-center">1</span>
-                    <button type="button" class="btn-qty-plus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">+</button>
+                    <button type="button" aria-label="Diminuir quantidade" class="btn-qty-minus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">-</button>
+                    <span class="qty-display text-sm font-bold text-slate-900 w-6 text-center">1</span>
+                    <button type="button" aria-label="Aumentar quantidade" class="btn-qty-plus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">+</button>
                   </div>
                 </div>
               </div>
 
               <!-- Item 6: Armário de Cozinha Suspenso -->
-              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-4 transition-all duration-200 hover:border-blue-300 hover:shadow-xs bg-white cursor-pointer select-none" data-id="armario_cozinha" data-price="120" data-name="Armário de Cozinha Suspenso">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-blue-600 border-slate-300 cursor-pointer pointer-events-none">
-                    <div>
-                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">Armário de Cozinha</h4>
-                      <p class="text-xs text-slate-500 mt-0.5">Módulo aéreo / balcão com fixação</p>
+              <div class="item-card group relative border-2 border-slate-200 rounded-xl p-3.5 sm:p-4 transition-all duration-150 hover:border-blue-300 bg-white cursor-pointer select-none active:scale-[0.99]" data-id="armario_cozinha" data-price="120" data-name="Armário de Cozinha Suspenso">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-blue-700 focus:ring-0 border-slate-300 pointer-events-none shrink-0">
+                    <div class="truncate">
+                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug truncate">Armário de Cozinha</h4>
+                      <p class="text-[11px] sm:text-xs text-slate-500">Módulo aéreo com fixação</p>
                     </div>
                   </div>
-                  <span class="text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg">R$ 120,00</span>
+                  <span class="text-xs sm:text-sm font-bold text-blue-700 whitespace-nowrap bg-blue-50 px-2.5 py-1 rounded-lg shrink-0">R$ 120,00</span>
                 </div>
                 
-                <div class="qty-control hidden mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span class="text-xs text-slate-500 font-medium">Quantidade:</span>
+                <div class="qty-control hidden mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-xs text-slate-600 font-medium">Quantidade:</span>
                   <div class="flex items-center gap-2">
-                    <button type="button" class="btn-qty-minus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">-</button>
-                    <span class="qty-display text-sm font-bold text-slate-800 w-6 text-center">1</span>
-                    <button type="button" class="btn-qty-plus w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition-colors">+</button>
+                    <button type="button" aria-label="Diminuir quantidade" class="btn-qty-minus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">-</button>
+                    <span class="qty-display text-sm font-bold text-slate-900 w-6 text-center">1</span>
+                    <button type="button" aria-label="Aumentar quantidade" class="btn-qty-plus w-8 h-8 rounded-lg bg-slate-100 active:bg-slate-300 text-slate-800 font-extrabold flex items-center justify-center transition-colors text-base">+</button>
                   </div>
                 </div>
               </div>
 
               <!-- Item 7: Taxa de Desmontagem / Mudança -->
-              <div class="item-card group relative border-2 border-amber-200 bg-amber-50/40 rounded-xl p-4 transition-all duration-200 hover:border-amber-400 hover:shadow-xs cursor-pointer select-none sm:col-span-2" data-id="taxa_desmontagem" data-price="50" data-name="Taxa de Desmontagem / Mudança">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-amber-600 focus:ring-amber-500 border-amber-300 cursor-pointer pointer-events-none">
-                    <div>
-                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug flex items-center gap-2">
-                        Taxa de Desmontagem / Mudança
-                        <span class="bg-amber-200 text-amber-900 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full">Opcional</span>
+              <div class="item-card group relative border-2 border-amber-300 bg-amber-50/50 rounded-xl p-3.5 sm:p-4 transition-all duration-150 hover:border-amber-400 cursor-pointer select-none sm:col-span-2 active:scale-[0.99]" data-id="taxa_desmontagem" data-price="50" data-name="Taxa de Desmontagem / Mudança">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <input type="checkbox" class="item-checkbox w-5 h-5 rounded text-amber-600 focus:ring-0 border-amber-300 pointer-events-none shrink-0">
+                    <div class="truncate">
+                      <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug flex items-center gap-1.5 truncate">
+                        <span>Desmontagem / Mudança</span>
+                        <span class="bg-amber-200 text-amber-900 text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-full shrink-0">Opcional</span>
                       </h4>
-                      <p class="text-xs text-slate-600 mt-0.5">Precisa desmontar o móvel antigo antes de montar o novo?</p>
+                      <p class="text-[11px] sm:text-xs text-slate-600">Precisa desmontar o móvel antigo?</p>
                     </div>
                   </div>
-                  <span class="text-sm font-bold text-amber-800 whitespace-nowrap bg-amber-100 px-2.5 py-1 rounded-lg">+ R$ 50,00</span>
+                  <span class="text-xs sm:text-sm font-bold text-amber-800 whitespace-nowrap bg-amber-100 px-2.5 py-1 rounded-lg shrink-0">+ R$ 50,00</span>
                 </div>
                 
-                <div class="qty-control hidden mt-3 pt-3 border-t border-amber-200 flex items-center justify-between">
-                  <span class="text-xs text-slate-600 font-medium">Quantidade de móveis a desmontar:</span>
+                <div class="qty-control hidden mt-3 pt-2.5 border-t border-amber-200 flex items-center justify-between">
+                  <span class="text-xs text-slate-700 font-medium">Quantidade a desmontar:</span>
                   <div class="flex items-center gap-2">
-                    <button type="button" class="btn-qty-minus w-7 h-7 rounded-lg bg-amber-200 hover:bg-amber-300 text-slate-800 font-bold flex items-center justify-center transition-colors">-</button>
-                    <span class="qty-display text-sm font-bold text-slate-800 w-6 text-center">1</span>
-                    <button type="button" class="btn-qty-plus w-7 h-7 rounded-lg bg-amber-200 hover:bg-amber-300 text-slate-800 font-bold flex items-center justify-center transition-colors">+</button>
+                    <button type="button" aria-label="Diminuir quantidade" class="btn-qty-minus w-8 h-8 rounded-lg bg-amber-200 active:bg-amber-300 text-slate-900 font-extrabold flex items-center justify-center transition-colors text-base">-</button>
+                    <span class="qty-display text-sm font-bold text-slate-900 w-6 text-center">1</span>
+                    <button type="button" aria-label="Aumentar quantidade" class="btn-qty-plus w-8 h-8 rounded-lg bg-amber-200 active:bg-amber-300 text-slate-900 font-extrabold flex items-center justify-center transition-colors text-base">+</button>
                   </div>
                 </div>
               </div>
@@ -526,72 +602,72 @@
           </div>
 
           <!-- STEP 2: DADOS DO CLIENTE E LOCALIZAÇÃO -->
-          <div class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-5 sm:p-7">
-            <div class="flex items-center gap-3 pb-4 border-b border-slate-100 mb-6">
-              <span class="w-8 h-8 rounded-full bg-blue-700 text-white font-bold flex items-center justify-center text-sm">2</span>
+          <div id="secao-dados" class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-4 sm:p-7">
+            <div class="flex items-center gap-2.5 pb-3.5 border-b border-slate-100 mb-5">
+              <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-700 text-white font-bold flex items-center justify-center text-xs sm:text-sm shrink-0">2</span>
               <div>
-                <h3 class="text-lg sm:text-xl font-bold text-slate-900">Dados do Serviço e Localização</h3>
-                <p class="text-xs text-slate-500">Informações para confirmarmos a data e o deslocamento</p>
+                <h3 class="text-base sm:text-xl font-bold text-slate-900 leading-tight">Dados do Agendamento</h3>
+                <p class="text-[11px] sm:text-xs text-slate-500">Informações para confirmarmos sua data e deslocamento</p>
               </div>
             </div>
 
-            <form id="form-orcamento" class="space-y-5" onsubmit="return false;">
-              <div class="grid sm:grid-cols-2 gap-4">
+            <form id="form-orcamento" class="space-y-4 sm:space-y-5" onsubmit="return false;">
+              <div class="grid sm:grid-cols-2 gap-3.5 sm:gap-4">
                 
                 <!-- Nome -->
                 <div>
-                  <label for="cliente-nome" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label for="cliente-nome" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                     Seu Nome Completo *
                   </label>
                   <div class="relative">
                     <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                       <i data-lucide="user" class="w-4 h-4"></i>
                     </span>
-                    <input type="text" id="cliente-nome" required placeholder="Ex: Carlos Oliveira" class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400">
+                    <input type="text" id="cliente-nome" required placeholder="Ex: Carlos Oliveira" class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 bg-white">
                   </div>
                 </div>
 
                 <!-- Bairro / Endereço -->
                 <div>
-                  <label for="cliente-bairro" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label for="cliente-bairro" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                     Bairro / Cidade *
                   </label>
                   <div class="relative">
                     <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                       <i data-lucide="map-pin" class="w-4 h-4"></i>
                     </span>
-                    <input type="text" id="cliente-bairro" required placeholder="Ex: Centro - Tatuí" class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400">
+                    <input type="text" id="cliente-bairro" required placeholder="Ex: Centro - Tatuí" class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 bg-white">
                   </div>
                 </div>
 
                 <!-- Data Preferencial -->
                 <div>
-                  <label for="cliente-data" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label for="cliente-data" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                     Data Preferencial *
                   </label>
                   <div class="relative">
                     <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                       <i data-lucide="calendar" class="w-4 h-4"></i>
                     </span>
-                    <input type="date" id="cliente-data" required class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all">
+                    <input type="date" id="cliente-data" required class="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all bg-white min-h-[44px]">
                   </div>
                 </div>
 
                 <!-- Móveis no Local -->
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Os móveis já estão no local?
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Móveis já estão no local?
                   </label>
                   <div class="grid grid-cols-2 gap-2">
                     <label class="cursor-pointer">
                       <input type="radio" name="moveis_local" value="Sim, já estão no local" checked class="peer sr-only">
-                      <div class="py-2.5 px-3 text-center rounded-xl border border-slate-300 text-xs font-bold text-slate-700 peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-800 transition-all flex items-center justify-center gap-1.5">
+                      <div class="py-2.5 px-2 text-center rounded-xl border border-slate-300 text-xs font-bold text-slate-700 peer-checked:border-emerald-600 peer-checked:bg-emerald-50 peer-checked:text-emerald-800 transition-all flex items-center justify-center gap-1.5 min-h-[44px]">
                         <i data-lucide="check" class="w-3.5 h-3.5"></i> Sim, entregues
                       </div>
                     </label>
                     <label class="cursor-pointer">
                       <input type="radio" name="moveis_local" value="Não, aguardando entrega" class="peer sr-only">
-                      <div class="py-2.5 px-3 text-center rounded-xl border border-slate-300 text-xs font-bold text-slate-700 peer-checked:border-amber-600 peer-checked:bg-amber-50 peer-checked:text-amber-800 transition-all flex items-center justify-center gap-1.5">
+                      <div class="py-2.5 px-2 text-center rounded-xl border border-slate-300 text-xs font-bold text-slate-700 peer-checked:border-amber-600 peer-checked:bg-amber-50 peer-checked:text-amber-800 transition-all flex items-center justify-center gap-1.5 min-h-[44px]">
                         <i data-lucide="truck" class="w-3.5 h-3.5"></i> Aguardando
                       </div>
                     </label>
@@ -602,10 +678,10 @@
 
               <!-- Observações Adicionais (Opcional) -->
               <div>
-                <label for="cliente-obs" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label for="cliente-obs" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                   Observações adicionais (opcional)
                 </label>
-                <textarea id="cliente-obs" rows="2" placeholder="Ex: Apartamento 3º andar, tem elevador, parede de drywall, etc." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400"></textarea>
+                <textarea id="cliente-obs" rows="2" placeholder="Ex: Apartamento com elevador, parede de drywall, etc." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 bg-white"></textarea>
               </div>
 
             </form>
@@ -614,13 +690,13 @@
         </div>
 
         <!-- Right: Realtime Summary Sticky Card (4 cols) -->
-        <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-4">
+        <div id="secao-resumo" class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
           
-          <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 relative overflow-hidden">
+          <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-5 sm:p-6 relative overflow-hidden">
             <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-700 via-indigo-600 to-amber-500"></div>
 
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <div class="flex items-center justify-between pb-3.5 border-b border-slate-100">
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
                 <i data-lucide="receipt" class="w-4 h-4 text-blue-700"></i>
                 Resumo da Simulação
               </h3>
@@ -630,15 +706,15 @@
             </div>
 
             <!-- Selected Items List -->
-            <div id="lista-resumo" class="py-4 space-y-2.5 min-h-[140px] max-h-[220px] overflow-y-auto text-sm border-b border-slate-100">
-              <p class="text-xs text-slate-400 text-center py-8 italic flex flex-col items-center gap-2">
+            <div id="lista-resumo" class="py-3 space-y-2 min-h-[110px] max-h-[200px] overflow-y-auto text-sm border-b border-slate-100">
+              <p class="text-xs text-slate-400 text-center py-6 italic flex flex-col items-center gap-1.5">
                 <i data-lucide="mouse-pointer-click" class="w-5 h-5 text-slate-300"></i>
-                Nenhum móvel selecionado ainda.<br>Clique nos cards ao lado para simular.
+                Nenhum móvel selecionado ainda.<br>Toque nos cards acima para calcular.
               </p>
             </div>
 
             <!-- Price Breakdown -->
-            <div class="py-4 space-y-2 text-sm">
+            <div class="py-3.5 space-y-1.5 text-xs sm:text-sm">
               <div class="flex justify-between text-slate-600">
                 <span>Subtotal Serviços</span>
                 <span id="valor-subtotal" class="font-semibold text-slate-800">R$ 0,00</span>
@@ -648,13 +724,13 @@
                   Taxa de Deslocamento
                   <i data-lucide="help-circle" class="w-3 h-3 text-slate-400" title="Consulte valor exato para bairros afastados ou zona rural"></i>
                 </span>
-                <span class="font-semibold text-emerald-600">Sob Consulta (Tatuí Grátis)</span>
+                <span class="font-semibold text-emerald-600">Grátis em Tatuí</span>
               </div>
               
               <div class="pt-3 border-t border-slate-200 flex justify-between items-baseline">
                 <div>
                   <span class="block text-xs uppercase tracking-wider font-extrabold text-slate-500">Total Estimado</span>
-                  <span class="text-[11px] text-slate-400">Preço transparente</span>
+                  <span class="text-[10px] text-slate-400">Preço transparente</span>
                 </div>
                 <div class="text-right">
                   <span id="valor-total" class="text-2xl sm:text-3xl font-extrabold text-blue-800">R$ 0,00</span>
@@ -663,29 +739,29 @@
             </div>
 
             <!-- Submit WhatsApp Button -->
-            <button type="button" id="btn-enviar-whatsapp" class="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-extrabold text-sm sm:text-base py-3.5 px-4 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2.5 mt-2">
-              <i data-lucide="message-circle" class="w-5 h-5 fill-white"></i>
-              Solicitar Agendamento no WhatsApp
+            <button type="button" id="btn-enviar-whatsapp" class="w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-extrabold text-sm sm:text-base py-3.5 px-4 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 mt-2">
+              <i data-lucide="message-circle" class="w-5 h-5 fill-white shrink-0"></i>
+              <span>Solicitar no WhatsApp</span>
             </button>
 
             <!-- Guarantee reassurance -->
-            <div class="mt-4 pt-3 border-t border-slate-100 text-center space-y-1">
+            <div class="mt-3.5 pt-2.5 border-t border-slate-100 text-center">
               <p class="text-[11px] text-slate-500 flex items-center justify-center gap-1.5 font-medium">
-                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i> Orçamento sem compromisso e sem taxas ocultas
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600 shrink-0"></i> Orçamento sem compromisso
               </p>
             </div>
 
           </div>
 
           <!-- Quick Contact Help Card -->
-          <div class="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 text-xs text-blue-900 flex items-start gap-3">
-            <div class="p-2 bg-blue-100 rounded-lg text-blue-700 shrink-0">
+          <div class="bg-blue-50/80 border border-blue-200/80 rounded-2xl p-3.5 sm:p-4 text-xs text-blue-900 flex items-start gap-2.5">
+            <div class="p-1.5 bg-blue-100 rounded-lg text-blue-700 shrink-0 mt-0.5">
               <i data-lucide="phone-call" class="w-4 h-4"></i>
             </div>
             <div>
-              <strong class="font-bold">Tem um projeto sob medida ou outro tipo de móvel?</strong>
+              <strong class="font-bold">Móvel planejado ou outro tipo?</strong>
               <p class="mt-0.5 text-blue-800/80 leading-relaxed">
-                Montamos qualquer tipo de móvel, inclusive corporativo e planejado. Chame direto no WhatsApp para tirar dúvidas.
+                Montamos qualquer tipo de móvel. Se o seu item não estiver na lista, chame no WhatsApp para combinarmos!
               </p>
             </div>
           </div>
@@ -698,64 +774,64 @@
   </section>
 
   <!-- ================= DIFERENCIAIS / POR QUE ESCOLHER ================= -->
-  <section id="diferenciais" class="py-16 sm:py-24 bg-white">
+  <section id="diferenciais" class="py-12 sm:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
         <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full">
           Por que a JS Montagem?
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
-          O cuidado que a sua casa e seus móveis merecem
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mt-2.5 sm:mt-3">
+          O cuidado que a sua casa merece
         </h2>
-        <p class="text-slate-600 mt-3 text-base sm:text-lg">
-          Montar móvel não é só apertar parafuso. Um serviço mal feito diminui a vida útil do produto e pode causar acidentes.
+        <p class="text-slate-600 mt-2 text-xs sm:text-base">
+          Montar móvel com precisão evita folgas, rangidos e aumenta a durabilidade das peças.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         
         <!-- Card 1 -->
-        <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-lg hover:border-blue-300 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md shadow-blue-700/20">
-            <i data-lucide="wrench" class="w-6 h-6 text-amber-400"></i>
+        <div class="p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-4 shadow-sm shadow-blue-700/20">
+            <i data-lucide="wrench" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-400"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Ferramental Próprio e Preciso</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Parafusadeiras a bateria com controle de torque para não esfarelar MDF/MDP e ferramentas de fixação reforçadas.
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">Ferramentas de Ponta</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Parafusadeiras com regulagem de torque para não esfarelar a madeira (MDF/MDP).
           </p>
         </div>
 
         <!-- Card 2 -->
-        <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-lg hover:border-blue-300 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md shadow-blue-700/20">
-            <i data-lucide="crosshair" class="w-6 h-6 text-amber-400"></i>
+        <div class="p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-4 shadow-sm shadow-blue-700/20">
+            <i data-lucide="crosshair" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-400"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Nível a Laser & Segurança</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Instalação de painéis, prateleiras e armários aéreos perfeitamente alinhados e ancorados com buchas adequadas.
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">Nível a Laser Exato</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Painéis e armários aéreos perfeitamente retos e com fixação de alta carga na parede.
           </p>
         </div>
 
         <!-- Card 3 -->
-        <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-lg hover:border-blue-300 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md shadow-blue-700/20">
-            <i data-lucide="clock" class="w-6 h-6 text-amber-400"></i>
+        <div class="p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-4 shadow-sm shadow-blue-700/20">
+            <i data-lucide="clock" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-400"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Pontualidade Britânica</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Respeito absoluto ao seu tempo. Marcamos dia e horário exatos, sem surpresas ou cancelamentos em cima da hora.
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">Pontualidade Britânica</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Compromisso com o horário combinado. Sem atrasos e sem remarcações de última hora.
           </p>
         </div>
 
         <!-- Card 4 -->
-        <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-lg hover:border-blue-300 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-5 group-hover:scale-110 transition-transform shadow-md shadow-blue-700/20">
-            <i data-lucide="sparkles" class="w-6 h-6 text-amber-400"></i>
+        <div class="p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-md transition-all group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center mb-4 shadow-sm shadow-blue-700/20">
+            <i data-lucide="sparkles" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-400"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">Ambiente Limpo e Organizado</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Usamos mantas para não riscar o piso, recolhemos todo o plástico, papelão e serragem ao término da montagem.
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">Ambiente Limpo</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Protegemos o piso com mantas e recolhemos papelão, plásticos e pó de furação.
           </p>
         </div>
 
@@ -764,97 +840,80 @@
     </div>
   </section>
 
-  <!-- ================= COMO FUNCIONA (PASSO A PASSO) ================= -->
-  <section id="como-funciona" class="py-16 sm:py-20 bg-slate-50 border-t border-slate-200/80">
+  <!-- ================= COMO FUNCIONA ================= -->
+  <section id="como-funciona" class="py-12 sm:py-20 bg-slate-50 border-t border-slate-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
         <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
           Passo a Passo
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
-          Simples, Direto e Sem Burocracia
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mt-2.5 sm:mt-3">
+          Simples, Rápido e Sem Burocracia
         </h2>
-        <p class="text-slate-600 mt-2 text-base">
-          Veja como é rápido ter seu móvel montado com perfeição
-        </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 relative">
+      <div class="grid md:grid-cols-3 gap-5 sm:gap-8">
         
         <!-- Step 1 -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xs relative">
-          <div class="text-4xl font-black text-blue-100 absolute top-4 right-6">01</div>
-          <div class="w-12 h-12 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold text-lg mb-4">
-            <i data-lucide="calculator" class="w-6 h-6"></i>
+        <div class="bg-white rounded-2xl p-5 sm:p-7 border border-slate-200 shadow-2xs relative">
+          <div class="text-3xl sm:text-4xl font-black text-blue-100 absolute top-4 right-5">01</div>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold mb-3">
+            <i data-lucide="calculator" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">1. Simule e Envie</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Escolha os móveis na nossa calculadora online, informe o seu bairro e clique para enviar no WhatsApp com mensagem já formatada.
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">1. Simule e Envie</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Escolha os móveis no nosso simulador e toque no botão de WhatsApp. A mensagem vai pronta!
           </p>
         </div>
 
         <!-- Step 2 -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xs relative">
-          <div class="text-4xl font-black text-blue-100 absolute top-4 right-6">02</div>
-          <div class="w-12 h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center font-bold text-lg mb-4">
-            <i data-lucide="calendar-check" class="w-6 h-6"></i>
+        <div class="bg-white rounded-2xl p-5 sm:p-7 border border-slate-200 shadow-2xs relative">
+          <div class="text-3xl sm:text-4xl font-black text-blue-100 absolute top-4 right-5">02</div>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-700 text-white flex items-center justify-center font-bold mb-3">
+            <i data-lucide="calendar-check" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">2. Confirmação Rápida</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Respondemos em poucos minutos para confirmar a data, horário e tirar dúvidas pontuais sobre o móvel ou parede.
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">2. Confirmação Rápida</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Respondemos em poucos minutos para confirmar o melhor horário de atendimento para você.
           </p>
         </div>
 
         <!-- Step 3 -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-xs relative">
-          <div class="text-4xl font-black text-blue-100 absolute top-4 right-6">03</div>
-          <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg mb-4">
-            <i data-lucide="smile" class="w-6 h-6"></i>
+        <div class="bg-white rounded-2xl p-5 sm:p-7 border border-slate-200 shadow-2xs relative">
+          <div class="text-3xl sm:text-4xl font-black text-blue-100 absolute top-4 right-5">03</div>
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold mb-3">
+            <i data-lucide="smile" class="w-5 h-5 sm:w-6 sm:h-6"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 mb-2">3. Montagem e Satisfação</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            Chegamos no horário combinado com ferramental completo. Você só paga após conferir tudo pronto e regulado!
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-1.5">3. Montagem Perfeita</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Montagem limpa e alinhada. O pagamento só é feito após você conferir o resultado!
           </p>
         </div>
 
-      </div>
-
-      <!-- Quick Banner inside section -->
-      <div class="mt-12 bg-gradient-to-r from-blue-700 to-indigo-800 rounded-2xl p-6 sm:p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-lg">
-        <div class="space-y-1 text-center sm:text-left">
-          <h4 class="text-xl font-bold">Já está com as caixas dos móveis aí na sua casa?</h4>
-          <p class="text-sm text-blue-100">Não deixe para depois. Montamos hoje ou no seu melhor dia.</p>
-        </div>
-        <a href="#simulador" class="shrink-0 bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold text-sm px-6 py-3.5 rounded-xl shadow-md transition-all flex items-center gap-2">
-          <i data-lucide="calculator" class="w-4 h-4"></i> Agendar Agora
-        </a>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= AVALIAÇÕES / PROVA SOCIAL ================= -->
-  <section id="avaliacoes" class="py-16 sm:py-20 bg-white">
+  <!-- ================= AVALIAÇÕES ================= -->
+  <section id="avaliacoes" class="py-12 sm:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
         <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
           Depoimentos
         </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">
-          O que dizem os clientes em Tatuí
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mt-2.5 sm:mt-3">
+          Quem contratou, aprovou
         </h2>
-        <p class="text-slate-600 mt-2 text-base">
-          Avaliações reais de quem confiou na JS Montagem
-        </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-4 sm:gap-6">
         
         <!-- Depoimento 1 -->
-        <div class="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 flex flex-col justify-between">
-          <div class="space-y-3">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col justify-between">
+          <div class="space-y-2.5">
             <div class="flex text-amber-400">
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
@@ -862,24 +921,22 @@
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             </div>
-            <p class="text-sm text-slate-700 italic leading-relaxed">
-              "Comprei um guarda-roupa de 6 portas pela internet e estava com medo de estragar na montagem. O montador foi super educado, pontual e deixou tudo 100% alinhado. Recomendo muito!"
+            <p class="text-xs sm:text-sm text-slate-700 italic leading-relaxed">
+              "Comprei um guarda-roupa de casal pela internet e o montador foi super educado e rápido. Portas alinhadas e sem nenhum risco."
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 mt-4 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-sm">
-              MS
-            </div>
+          <div class="pt-3.5 border-t border-slate-200/80 mt-3.5 flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs">MS</div>
             <div>
-              <p class="font-bold text-slate-900 text-sm">Mariana Souza</p>
-              <p class="text-xs text-slate-500">Jardim Wanderley, Tatuí</p>
+              <p class="font-bold text-slate-900 text-xs sm:text-sm">Mariana Souza</p>
+              <p class="text-[11px] text-slate-500">Jardim Wanderley, Tatuí</p>
             </div>
           </div>
         </div>
 
         <!-- Depoimento 2 -->
-        <div class="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 flex flex-col justify-between">
-          <div class="space-y-3">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col justify-between">
+          <div class="space-y-2.5">
             <div class="flex text-amber-400">
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
@@ -887,24 +944,22 @@
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             </div>
-            <p class="text-sm text-slate-700 italic leading-relaxed">
-              "Instalou o painel de TV da sala usando nível a laser. Ficou perfeito, nem um milímetro torto. Além disso, limpou toda a poeira da furadeira. Serviço impecável."
+            <p class="text-xs sm:text-sm text-slate-700 italic leading-relaxed">
+              "Instalou o painel de TV na parede de drywall com buchas específicas. Nível a laser perfeito. Serviço de primeira linha!"
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 mt-4 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-sm">
-              RA
-            </div>
+          <div class="pt-3.5 border-t border-slate-200/80 mt-3.5 flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-xs">RA</div>
             <div>
-              <p class="font-bold text-slate-900 text-sm">Rodrigo Alves</p>
-              <p class="text-xs text-slate-500">Centro, Boituva</p>
+              <p class="font-bold text-slate-900 text-xs sm:text-sm">Rodrigo Alves</p>
+              <p class="text-[11px] text-slate-500">Centro, Boituva</p>
             </div>
           </div>
         </div>
 
         <!-- Depoimento 3 -->
-        <div class="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 flex flex-col justify-between">
-          <div class="space-y-3">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col justify-between">
+          <div class="space-y-2.5">
             <div class="flex text-amber-400">
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
@@ -912,17 +967,15 @@
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
               <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             </div>
-            <p class="text-sm text-slate-700 italic leading-relaxed">
-              "Fiz a simulação pelo site e mandei pelo WhatsApp, me responderam na hora e agendaram para o dia seguinte. Preço justo e muito honesto!"
+            <p class="text-xs sm:text-sm text-slate-700 italic leading-relaxed">
+              "Fiz o pedido pelo celular, mandei no WhatsApp e marcaram pro dia seguinte. Preço justo e muito pontual!"
             </p>
           </div>
-          <div class="pt-4 border-t border-slate-200 mt-4 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-sm">
-              CL
-            </div>
+          <div class="pt-3.5 border-t border-slate-200/80 mt-3.5 flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-xs">CL</div>
             <div>
-              <p class="font-bold text-slate-900 text-sm">Camila Lima</p>
-              <p class="text-xs text-slate-500">Vila Doutor Laurindo, Tatuí</p>
+              <p class="font-bold text-slate-900 text-xs sm:text-sm">Camila Lima</p>
+              <p class="text-[11px] text-slate-500">Vila Dr. Laurindo, Tatuí</p>
             </div>
           </div>
         </div>
@@ -932,62 +985,62 @@
     </div>
   </section>
 
-  <!-- ================= FAQ (PERGUNTAS FREQUENTES) ================= -->
-  <section id="faq" class="py-16 sm:py-20 bg-slate-50 border-t border-slate-200/80">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="py-12 sm:py-20 bg-slate-50 border-t border-slate-200/80">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center mb-12">
+      <div class="text-center mb-8 sm:mb-12">
         <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
           Dúvidas Frequentes
         </span>
-        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mt-3">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-2.5">
           Perguntas Frequentes
         </h2>
       </div>
 
-      <div class="space-y-3" id="faq-accordion">
+      <div class="space-y-2.5" id="faq-accordion">
         
         <!-- FAQ 1 -->
         <div class="faq-item border border-slate-200 rounded-xl bg-white overflow-hidden transition-all">
-          <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-4 hover:text-blue-700">
-            <span>Você traz todas as ferramentas necessárias?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon"></i>
+          <button type="button" class="faq-btn w-full px-4 py-3.5 sm:px-5 sm:py-4 text-left font-bold text-slate-900 text-xs sm:text-sm flex justify-between items-center gap-3">
+            <span>Você traz todas as ferramentas?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon shrink-0"></i>
           </button>
-          <div class="faq-content hidden px-5 pb-4 text-sm text-slate-600 border-t border-slate-100 pt-3">
-            Sim! Levamos parafusadeiras profissionais a bateria, brocas para alvenaria ou drywall, nível a laser, martelos especiais de borracha para não marcar o acabamento e extensões. Você não precisa se preocupar com nada.
+          <div class="faq-content hidden px-4 pb-3.5 sm:px-5 sm:pb-4 text-xs sm:text-sm text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+            Sim! Levamos parafusadeiras a bateria, brocas para alvenaria ou drywall, nível a laser, martelos de borracha e extensões. Você não precisa se preocupar com nada.
           </div>
         </div>
 
         <!-- FAQ 2 -->
         <div class="faq-item border border-slate-200 rounded-xl bg-white overflow-hidden transition-all">
-          <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-4 hover:text-blue-700">
-            <span>O que acontece se faltar parafuso ou peça na embalagem?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon"></i>
+          <button type="button" class="faq-btn w-full px-4 py-3.5 sm:px-5 sm:py-4 text-left font-bold text-slate-900 text-xs sm:text-sm flex justify-between items-center gap-3">
+            <span>E se faltar parafuso ou peça na embalagem?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon shrink-0"></i>
           </button>
-          <div class="faq-content hidden px-5 pb-4 text-sm text-slate-600 border-t border-slate-100 pt-3">
-            Carregamos kits sobressalentes com os parafusos, cavilhas, buchas e suportes mais comuns do mercado. Se for uma falta simples de ferragem, nós mesmos resolvemos para você não perder o serviço!
+          <div class="faq-content hidden px-4 pb-3.5 sm:px-5 sm:pb-4 text-xs sm:text-sm text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+            Carregamos kits sobressalentes com parafusos, cavilhas, buchas e suportes mais comuns do mercado para você não ter dor de cabeça caso falte ferragem da fábrica.
           </div>
         </div>
 
         <!-- FAQ 3 -->
         <div class="faq-item border border-slate-200 rounded-xl bg-white overflow-hidden transition-all">
-          <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-4 hover:text-blue-700">
-            <span>Quais são as formas de pagamento aceitas?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon"></i>
+          <button type="button" class="faq-btn w-full px-4 py-3.5 sm:px-5 sm:py-4 text-left font-bold text-slate-900 text-xs sm:text-sm flex justify-between items-center gap-3">
+            <span>Quais as formas de pagamento aceitas?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon shrink-0"></i>
           </button>
-          <div class="faq-content hidden px-5 pb-4 text-sm text-slate-600 border-t border-slate-100 pt-3">
-            Aceitamos Pix (com aprovação imediata), dinheiro ou cartões de débito/crédito. O pagamento só é feito ao final da montagem, após você conferir que tudo está funcionando e montado conforme o combinado.
+          <div class="faq-content hidden px-4 pb-3.5 sm:px-5 sm:pb-4 text-xs sm:text-sm text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+            Aceitamos Pix, dinheiro ou cartões. O pagamento só é realizado ao final do serviço, após você aprovar a montagem.
           </div>
         </div>
 
         <!-- FAQ 4 -->
         <div class="faq-item border border-slate-200 rounded-xl bg-white overflow-hidden transition-all">
-          <button type="button" class="faq-btn w-full px-5 py-4 text-left font-bold text-slate-900 text-sm sm:text-base flex justify-between items-center gap-4 hover:text-blue-700">
-            <span>Vocês desmontam móveis para mudança?</span>
-            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon"></i>
+          <button type="button" class="faq-btn w-full px-4 py-3.5 sm:px-5 sm:py-4 text-left font-bold text-slate-900 text-xs sm:text-sm flex justify-between items-center gap-3">
+            <span>Vocês desmontam para mudança?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 faq-icon shrink-0"></i>
           </button>
-          <div class="faq-content hidden px-5 pb-4 text-sm text-slate-600 border-t border-slate-100 pt-3">
-            Sim! Temos a opção de desmontagem cuidadosa na nossa calculadora, organizando as ferragens para facilitar a remontagem na sua nova residência sem danificar os encaixes.
+          <div class="faq-content hidden px-4 pb-3.5 sm:px-5 sm:pb-4 text-xs sm:text-sm text-slate-600 border-t border-slate-100 pt-3 leading-relaxed">
+            Sim! Fazemos a desmontagem técnica e organizada, guardando os parafusos juntos para facilitar a remontagem futura sem perder peças.
           </div>
         </div>
 
@@ -997,24 +1050,24 @@
   </section>
 
   <!-- ================= FINAL CTA SECTION ================= -->
-  <section class="py-16 bg-gradient-to-tr from-slate-900 via-blue-950 to-indigo-900 text-white text-center relative overflow-hidden">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-amber-300 text-xs font-bold backdrop-blur-xs">
-        <i data-lucide="clock" class="w-3.5 h-3.5"></i> Agendamentos para esta semana disponíveis
+  <section class="py-12 sm:py-16 bg-gradient-to-tr from-slate-900 via-blue-950 to-indigo-900 text-white text-center relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 sm:space-y-6">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-amber-300 text-[11px] sm:text-xs font-bold">
+        <i data-lucide="clock" class="w-3.5 h-3.5"></i> Vagas abertas para esta semana
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-        Seu móvel pronto, firme e perfeito sem dor de cabeça
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+        Seu móvel pronto, firme e perfeito
       </h2>
-      <p class="text-slate-300 max-w-xl mx-auto text-base">
-        Evite peças tortas, portas desalinhadas ou acidentes. Chame quem entende do assunto em Tatuí e região.
+      <p class="text-slate-300 max-w-xl mx-auto text-xs sm:text-base">
+        Evite peças tortas ou acidentes. Chame quem tem ferramenta certa e anos de prática.
       </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-        <a href="#simulador" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-7 py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5">
-          <i data-lucide="calculator" class="w-5 h-5"></i>
-          Simular Meu Orçamento Agora
+      <div class="flex flex-col sm:flex-row justify-center gap-3 pt-2">
+        <a href="#simulador" class="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-bold text-sm sm:text-base px-6 py-3.5 sm:py-4 rounded-xl shadow-lg transition-transform">
+          <i data-lucide="calculator" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+          Simular Meu Orçamento
         </a>
-        <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20quero%20agendar%20uma%20montagem%20com%20voc%C3%AAs" target="_blank" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-7 py-4 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5">
-          <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20quero%20agendar%20uma%20montagem" target="_blank" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-bold text-sm sm:text-base px-6 py-3.5 sm:py-4 rounded-xl shadow-lg transition-transform">
+          <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           Chamar no WhatsApp
         </a>
       </div>
@@ -1022,70 +1075,73 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900 text-sm">
+  <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-900 text-xs sm:text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 pb-6 border-b border-slate-800">
         
-        <!-- Col 1: Brand -->
-        <div class="space-y-3 md:col-span-2">
-          <div class="flex items-center gap-2 text-white font-extrabold text-xl">
-            <div class="w-8 h-8 rounded-lg bg-blue-700 text-white flex items-center justify-center">
-              <i data-lucide="hammer" class="w-4 h-4 text-amber-400"></i>
+        <div class="space-y-2.5 md:col-span-2">
+          <div class="flex items-center gap-2 text-white font-extrabold text-base sm:text-lg">
+            <div class="w-7 h-7 rounded-lg bg-blue-700 text-white flex items-center justify-center">
+              <i data-lucide="hammer" class="w-3.5 h-3.5 text-amber-400"></i>
             </div>
             JS Montagem e Serviços
           </div>
           <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
-            Especialista em montagem, desmontagem e reparos de móveis residenciais e comerciais em Tatuí, Cerquilho, Boituva e região.
+            Montagem de móveis em Tatuí, Cerquilho, Boituva e toda a microrregião.
           </p>
-          <div class="flex items-center gap-2 text-xs text-emerald-400 pt-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Profissional Verificado e Qualificado
-          </div>
         </div>
 
-        <!-- Col 2: Serviços -->
         <div>
-          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Serviços</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="#simulador" class="hover:text-amber-400 transition-colors">Montagem de Guarda-Roupas</a></li>
-            <li><a href="#simulador" class="hover:text-amber-400 transition-colors">Painéis de TV & Homes</a></li>
-            <li><a href="#simulador" class="hover:text-amber-400 transition-colors">Armários de Cozinha</a></li>
-            <li><a href="#simulador" class="hover:text-amber-400 transition-colors">Camas e Beliches</a></li>
-            <li><a href="#simulador" class="hover:text-amber-400 transition-colors">Desmontagem para Mudança</a></li>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Serviços</h4>
+          <ul class="space-y-1.5 text-xs text-slate-400">
+            <li>Guarda-Roupas & Armários</li>
+            <li>Painéis de TV & Homes</li>
+            <li>Cozinhas & Balcões</li>
+            <li>Desmontagem para Mudança</li>
           </ul>
         </div>
 
-        <!-- Col 3: Contato Rápido -->
         <div>
-          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Contato</h4>
-          <ul class="space-y-2 text-xs">
-            <li class="flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-500"></i> Tatuí - SP
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-500"></i> (15) 99999-9999
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="calendar" class="w-3.5 h-3.5 text-amber-500"></i> Segunda a Sábado
-            </li>
-          </ul>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Contato</h4>
+          <p class="text-xs text-slate-400 flex items-center gap-1.5 mb-1">
+            <i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-400"></i> (15) 99999-9999
+          </p>
+          <p class="text-xs text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-400"></i> Tatuí - SP
+          </p>
         </div>
 
       </div>
 
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <p>© <span id="current-year"></span> JS Montagem e Serviços. Todos os direitos reservados.</p>
-        <p class="text-[11px]">Os valores da simulação são estimativas sujeitas à confirmação de detalhes específicos do móvel.</p>
+      <div class="pt-5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-2 text-center sm:text-left">
+        <p>© <span id="current-year"></span> JS Montagem. Todos os direitos reservados.</p>
+        <p>Valores sujeitos à confirmação conforme modelo e parede.</p>
       </div>
     </div>
   </footer>
 
-  <!-- ================= FLOATING WHATSAPP BUTTON ================= -->
-  <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20de%20montagem" target="_blank" aria-label="Falar no WhatsApp" class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl shadow-emerald-500/40 hover:scale-110 active:scale-95 transition-all">
-    <span class="absolute -top-1 -right-1 flex h-4 w-4">
+  <!-- ================= MOBILE FLOATING BOTTOM BAR (BARRA FIXA NO CELULAR) ================= -->
+  <!-- Visível apenas em telas menores que lg, aparece com o resumo e ação rápida -->
+  <aside id="mobile-sticky-bar" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-2xl px-4 py-2.5 pb-safe transition-transform duration-300">
+    <div class="flex items-center justify-between gap-3 max-w-md mx-auto">
+      <div>
+        <span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider block" id="mobile-bar-label">Total Estimado</span>
+        <span class="text-lg font-extrabold text-blue-700 leading-tight block" id="mobile-bar-total">R$ 0,00</span>
+      </div>
+      <button type="button" id="btn-mobile-scroll-action" class="bg-emerald-600 active:bg-emerald-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 transition-all">
+        <i data-lucide="message-circle" class="w-4 h-4 fill-white"></i>
+        <span>Agendar Pedido</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================= FLOATING WHATSAPP BUTTON (DESKTOP & MOBILE COMPACT) ================= -->
+  <a href="https://api.whatsapp.com/send?phone=5515999999999&text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20de%20montagem" target="_blank" aria-label="Falar no WhatsApp" class="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-40 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white w-12 h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center shadow-xl shadow-emerald-500/40 transition-all">
+    <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5 lg:h-4 lg:w-4">
       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-400"></span>
+      <span class="relative inline-flex rounded-full h-full w-full bg-emerald-400"></span>
     </span>
-    <i data-lucide="message-circle" class="w-7 h-7 fill-white"></i>
+    <i data-lucide="message-circle" class="w-6 h-6 lg:w-7 lg:h-7 fill-white"></i>
   </a>
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
@@ -1107,9 +1163,41 @@
       }
 
       // ----------------------------------------------------
+      // MOBILE MENU TOGGLE
+      // ----------------------------------------------------
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconBars = document.getElementById('menu-icon-bars');
+      const menuIconClose = document.getElementById('menu-icon-close');
+
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.contains('hidden');
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            menuIconBars.classList.add('hidden');
+            menuIconClose.classList.remove('hidden');
+          } else {
+            mobileMenu.classList.add('hidden');
+            menuIconBars.classList.remove('hidden');
+            menuIconClose.classList.add('hidden');
+          }
+        });
+
+        // Close mobile menu when clicking any nav link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuIconBars.classList.remove('hidden');
+            menuIconClose.classList.add('hidden');
+          });
+        });
+      }
+
+      // ----------------------------------------------------
       // STATE MANAGEMENT FOR SIMULATOR
       // ----------------------------------------------------
-      const WHATSAPP_PHONE = '5515981292160'; // Número do WhatsApp (DDI + DDD + Telefone)
+      const WHATSAPP_PHONE = '5515999999999'; // DDI + DDD + Telefone
 
       // State: Map of selected item id -> { name, price, qty }
       const selectedItems = {};
@@ -1121,6 +1209,11 @@
       const listaResumoEl = document.getElementById('lista-resumo');
       const btnLimpar = document.getElementById('btn-limpar-selecao');
       const btnEnviarWhatsApp = document.getElementById('btn-enviar-whatsapp');
+
+      // Mobile Bottom Bar elements
+      const mobileBarTotal = document.getElementById('mobile-bar-total');
+      const mobileBarLabel = document.getElementById('mobile-bar-label');
+      const btnMobileAction = document.getElementById('btn-mobile-scroll-action');
 
       // Format currency (BRL)
       const formatCurrency = (val) => {
@@ -1139,27 +1232,33 @@
           count += item.qty;
         });
 
-        // Update labels
+        // Update labels on desktop & tablet
         valorSubtotalEl.textContent = formatCurrency(total);
         valorTotalEl.textContent = formatCurrency(total);
         badgeItensCountEl.textContent = `${count} ${count === 1 ? 'item' : 'itens'}`;
 
+        // Update mobile bottom sticky bar
+        if (mobileBarTotal) mobileBarTotal.textContent = formatCurrency(total);
+        if (mobileBarLabel) {
+          mobileBarLabel.textContent = count > 0 ? `${count} ${count === 1 ? 'móvel' : 'móveis'} selecionados` : 'Total Estimado';
+        }
+
         // Render summary list
         if (itemsArray.length === 0) {
           listaResumoEl.innerHTML = `
-            <p class="text-xs text-slate-400 text-center py-8 italic flex flex-col items-center gap-2">
+            <p class="text-xs text-slate-400 text-center py-6 italic flex flex-col items-center gap-1.5">
               <i data-lucide="mouse-pointer-click" class="w-5 h-5 text-slate-300"></i>
-              Nenhum móvel selecionado ainda.<br>Clique nos cards ao lado para simular.
+              Nenhum móvel selecionado ainda.<br>Toque nos cards acima para calcular.
             </p>
           `;
           lucide.createIcons();
         } else {
-          let html = '<div class="space-y-2">';
+          let html = '<div class="space-y-1.5">';
           itemsArray.forEach(item => {
             const itemTotal = item.price * item.qty;
             html += `
-              <div class="flex justify-between items-center text-xs py-1 border-b border-slate-100/70">
-                <div class="pr-2">
+              <div class="flex justify-between items-center text-xs py-1 border-b border-slate-100">
+                <div class="pr-2 truncate">
                   <span class="font-bold text-slate-800">${item.qty}x</span> 
                   <span class="text-slate-700">${item.name}</span>
                 </div>
@@ -1195,7 +1294,7 @@
 
           if (nextState) {
             // Select item
-            card.classList.add('border-blue-600', 'bg-blue-50/40', 'ring-2', 'ring-blue-100');
+            card.classList.add('border-blue-600', 'bg-blue-50/50', 'ring-2', 'ring-blue-100');
             card.classList.remove('border-slate-200');
             if (qtyControl) qtyControl.classList.remove('hidden');
             
@@ -1207,7 +1306,7 @@
             if (qtyDisplay) qtyDisplay.textContent = '1';
           } else {
             // Deselect item
-            card.classList.remove('border-blue-600', 'bg-blue-50/40', 'ring-2', 'ring-blue-100');
+            card.classList.remove('border-blue-600', 'bg-blue-50/50', 'ring-2', 'ring-blue-100');
             card.classList.add('border-slate-200');
             if (qtyControl) qtyControl.classList.add('hidden');
             
@@ -1240,7 +1339,7 @@
               } else {
                 // If 1 and pressed minus, deselect item
                 checkbox.checked = false;
-                card.classList.remove('border-blue-600', 'bg-blue-50/40', 'ring-2', 'ring-blue-100');
+                card.classList.remove('border-blue-600', 'bg-blue-50/50', 'ring-2', 'ring-blue-100');
                 card.classList.add('border-slate-200');
                 qtyControl.classList.add('hidden');
                 delete selectedItems[id];
@@ -1261,7 +1360,7 @@
             const qtyDisplay = card.querySelector('.qty-display');
 
             checkbox.checked = false;
-            card.classList.remove('border-blue-600', 'bg-blue-50/40', 'ring-2', 'ring-blue-100');
+            card.classList.remove('border-blue-600', 'bg-blue-50/50', 'ring-2', 'ring-blue-100');
             card.classList.add('border-slate-200');
             if (qtyControl) qtyControl.classList.add('hidden');
             if (qtyDisplay) qtyDisplay.textContent = '1';
@@ -1271,88 +1370,124 @@
       }
 
       // ----------------------------------------------------
-      // WHATSAPP SUBMISSION & VALIDATION
+      // WHATSAPP SUBMISSION & VALIDATION FUNCTION
       // ----------------------------------------------------
-      if (btnEnviarWhatsApp) {
-        btnEnviarWhatsApp.addEventListener('click', () => {
-          const itemsArray = Object.values(selectedItems);
+      function enviarPedidoWhatsApp() {
+        const itemsArray = Object.values(selectedItems);
 
-          // 1. Validate if at least one item is chosen
-          if (itemsArray.length === 0) {
-            alert('⚠️ Por favor, selecione ao menos 1 móvel no simulador para calcular o orçamento.');
-            const container = document.getElementById('items-container');
+        // 1. Validate if at least one item is chosen
+        if (itemsArray.length === 0) {
+          alert('⚠️ Por favor, selecione ao menos 1 móvel no simulador para calcular o orçamento.');
+          const container = document.getElementById('items-container');
+          if (container) {
             container.scrollIntoView({ behavior: 'smooth', block: 'center' });
             container.classList.add('ring-2', 'ring-amber-500', 'rounded-xl');
             setTimeout(() => {
               container.classList.remove('ring-2', 'ring-amber-500', 'rounded-xl');
             }, 1800);
-            return;
           }
+          return;
+        }
 
-          // 2. Validate client info
+        // 2. Validate client info
+        const nomeInput = document.getElementById('cliente-nome');
+        const bairroInput = document.getElementById('cliente-bairro');
+        const dataInput = document.getElementById('cliente-data');
+        const obsInput = document.getElementById('cliente-obs');
+        const moveisLocalRadio = document.querySelector('input[name="moveis_local"]:checked');
+
+        const nome = nomeInput ? nomeInput.value.trim() : '';
+        const bairro = bairroInput ? bairroInput.value.trim() : '';
+        const data = dataInput ? dataInput.value : '';
+        const moveisNoLocal = moveisLocalRadio ? moveisLocalRadio.value : 'Sim, já estão no local';
+        const obs = obsInput ? obsInput.value.trim() : '';
+
+        if (!nome) {
+          alert('⚠️ Por favor, preencha o seu Nome Completo.');
+          const secaoDados = document.getElementById('secao-dados');
+          if (secaoDados) secaoDados.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (nomeInput) nomeInput.focus();
+          return;
+        }
+
+        if (!bairro) {
+          alert('⚠️ Por favor, informe o seu Bairro/Cidade para calcularmos o deslocamento.');
+          const secaoDados = document.getElementById('secao-dados');
+          if (secaoDados) secaoDados.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (bairroInput) bairroInput.focus();
+          return;
+        }
+
+        // Format Date to PT-BR (DD/MM/AAAA)
+        let dataFormatada = 'A combinar';
+        if (data) {
+          const [ano, mes, dia] = data.split('-');
+          dataFormatada = `${dia}/${mes}/${ano}`;
+        }
+
+        // Calculate Total
+        let total = 0;
+        itemsArray.forEach(item => {
+          total += item.price * item.qty;
+        });
+
+        // Format Items List for WhatsApp
+        const listaFormatada = itemsArray
+          .map(item => `• ${item.qty}x ${item.name} (${formatCurrency(item.price * item.qty)})`)
+          .join('\n');
+
+        // Build Final WhatsApp Message
+        let mensagem = `🔨 *SOLICITAÇÃO DE MONTAGEM DE MÓVEIS*\n`;
+        mensagem += `*Cliente:* ${nome}\n`;
+        mensagem += `*Bairro/Local:* ${bairro}\n`;
+        mensagem += `*Data Desejada:* ${dataFormatada}\n`;
+        mensagem += `*Móveis no local:* ${moveisNoLocal}\n`;
+        if (obs) {
+          mensagem += `*Observação:* ${obs}\n`;
+        }
+        mensagem += `--------------------------------------\n`;
+        mensagem += `*Itens selecionados:*\n`;
+        mensagem += `${listaFormatada}\n`;
+        mensagem += `--------------------------------------\n`;
+        mensagem += `*Valor Estimado:* ${formatCurrency(total)}\n\n`;
+        mensagem += `Olá! Gostaria de confirmar a disponibilidade para essa montagem.`;
+
+        // Generate URL & Redirect
+        const encodedText = encodeURIComponent(mensagem);
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodedText}`;
+
+        window.open(whatsappUrl, '_blank');
+      }
+
+      if (btnEnviarWhatsApp) {
+        btnEnviarWhatsApp.addEventListener('click', enviarPedidoWhatsApp);
+      }
+
+      // Mobile Bottom Bar click action
+      if (btnMobileAction) {
+        btnMobileAction.addEventListener('click', () => {
+          const itemsArray = Object.values(selectedItems);
           const nomeInput = document.getElementById('cliente-nome');
           const bairroInput = document.getElementById('cliente-bairro');
-          const dataInput = document.getElementById('cliente-data');
-          const obsInput = document.getElementById('cliente-obs');
-          const moveisLocalRadio = document.querySelector('input[name="moveis_local"]:checked');
 
-          const nome = nomeInput ? nomeInput.value.trim() : '';
-          const bairro = bairroInput ? bairroInput.value.trim() : '';
-          const data = dataInput ? dataInput.value : '';
-          const moveisNoLocal = moveisLocalRadio ? moveisLocalRadio.value : 'Sim, já entregues';
-          const obs = obsInput ? obsInput.value.trim() : '';
-
-          if (!nome) {
-            alert('⚠️ Por favor, preencha o seu Nome Completo.');
-            nomeInput.focus();
+          // If no item selected yet, scroll to items
+          if (itemsArray.length === 0) {
+            const container = document.getElementById('simulador');
+            if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
             return;
           }
 
-          if (!bairro) {
-            alert('⚠️ Por favor, informe o seu Bairro/Endereço para calcularmos o deslocamento.');
-            bairroInput.focus();
+          // If items selected but form empty, scroll to step 2 form
+          if (!nomeInput.value.trim() || !bairroInput.value.trim()) {
+            const secaoDados = document.getElementById('secao-dados');
+            if (secaoDados) secaoDados.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (!nomeInput.value.trim()) nomeInput.focus();
+            else if (!bairroInput.value.trim()) bairroInput.focus();
             return;
           }
 
-          // Format Date to PT-BR (DD/MM/AAAA)
-          let dataFormatada = 'A combinar';
-          if (data) {
-            const [ano, mes, dia] = data.split('-');
-            dataFormatada = `${dia}/${mes}/${ano}`;
-          }
-
-          // Calculate Total
-          let total = 0;
-          itemsArray.forEach(item => {
-            total += item.price * item.qty;
-          });
-
-          // Format Items List for WhatsApp
-          const listaFormatada = itemsArray
-            .map(item => `• ${item.qty}x ${item.name} (${formatCurrency(item.price * item.qty)})`)
-            .join('\n');
-
-          // Build Final WhatsApp Message
-          let mensagem = `🔨 *SOLICITAÇÃO DE MONTAGEM DE MÓVEIS*\n`;
-          mensagem += `*Cliente:* ${nome}\n`;
-          mensagem += `*Bairro/Local:* ${bairro}\n`;
-          mensagem += `*Data Desejada:* ${dataFormatada}\n`;
-          mensagem += `*Móveis no local:* ${moveisNoLocal}\n`;
-          if (obs) {
-            mensagem += `*Observação:* ${obs}\n`;
-          }
-          mensagem += `--------------------------------------\n`;
-          mensagem += `*Itens selecionados:*\n`;
-          mensagem += `${listaFormatada}\n`;
-          mensagem += `--------------------------------------\n`;
-          mensagem += `*Valor Estimado:* ${formatCurrency(total)}\n\n`;
-          mensagem += `Olá! Gostaria de confirmar a disponibilidade para essa montagem.`;
-
-          // Generate URL & Redirect
-          const encodedText = encodeURIComponent(mensagem);
-          const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodedText}`;
-
-          window.open(whatsappUrl, '_blank');
+          // If ready, trigger WhatsApp submission
+          enviarPedidoWhatsApp();
         });
       }
 
